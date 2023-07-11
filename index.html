@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast</title>
+
+    <!-- Favicon icon link -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Fonts link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+
+    <!-- CSS files -->
+    <link href="./styling.css" rel="stylesheet" />
+    <link href="./mediaquery.css" rel="stylesheet" />
+
+    <!-- Bootstrap link -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+
+  </head>
+  <body onload="startTime(), getWeather(DefaultPlace)">
+    <main>
+        <!-- Header -->
+      <header>
+        <p>Weather <span>Forecast</span></p>
+      </header>
+      
+      <div class="main-div">
+        <!-- Input your city name -->
+        <form onsubmit="event.preventDefault();">
+          <div class="search">
+            <input type="text" id="search-city" placeholder="Enter city name" />
+            <button id="search-btn"><i class="bi bi-search"></i></button>
+            <p id="ErrorMsg"></p>
+          </div>
+        </form>
+
+        <div class="weather-container">
+          <!-- Current Weather -->
+          <div class="current-weather-container">
+            <div class="current-weather">
+              <div class="date-time">
+                <p id="date">Date</p>
+                <p id="Time">Time</p>
+              </div>
+
+              <p id="place">City</p>
+              <div class="curr-weather-details">
+                <div class="weather-item" id="weathercondition">
+                  <h5>Condition</h5>
+                  <p id="condition"></p>
+                  <div id="condition-icon"></div>
+                </div>
+                <div class="weather-item">
+                  <h5>Temperature</h5>
+                  <p><span id="temperature"></span>&deg;C</p>
+                </div>
+                <div class="weather-item">
+                  <h5>Humidity</h5>
+                  <p><span id="humidity"></span>&percnt;</p>
+                </div>
+                <div class="weather-item">
+                  <h5>Wind Speed</h5>
+                  <p><span id="windspeed"></span>Km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weather Forecast for 7days -->
+          <div class="weather-forecast-container">
+            <div class="weather-forecast">
+              <div class="forecast-item">
+                <h5 id="day1"></h5>
+                <div class="forecast-item-details">
+                  <div id="day1-condition" class="condition-box">Condition</div>
+                  <p class="box">Temperature<span id="day1-temp"></span></p>
+                  <p class="box">Humidity<span id="day1-humidity"></span></p>
+                  <p class="box">Wind Speed<span id="day1-wind"></span></p>
+                </div>
+              </div>
+
+              <div class="forecast-item">
+                <h5 id="day2"></h5>
+                <div class="forecast-item-details">
+                  <div id="day2-condition" class="condition-box">Condition</div>
+                  <p class="box">Temperature<span id="day2-temp"></span></p>
+                  <p class="box">Humidity<span id="day2-humidity"></span></p>
+                  <p class="box">Wind Speed<span id="day2-wind"></span></p>
+                </div>
+              </div>
+
+              <div class="forecast-item">
+                <h5 id="day3"></h5>
+                <div class="forecast-item-details">
+                  <div id="day3-condition" class="condition-box">Condition</div>
+                  <p class="box">Temperature<span id="day3-temp"></span></p>
+                  <p class="box">Humidity<span id="day3-humidity"></span></p>
+                  <p class="box">Wind Speed<span id="day3-wind"></span></p>
+                </div>
+              </div>
+
+              <div class="forecast-item">
+                <h5 id="day4"></h5>
+                <div class="forecast-item-details">
+                  <div id="day4-condition" class="condition-box">Condition</div>
+                  <p class="box">Temperature<span id="day4-temp"></span></p>
+                  <p class="box">Humidity<span id="day4-humidity"></span></p>
+                  <p class="box">Wind Speed<span id="day4-wind"></span></p>
+                </div>
+              </div>
+
+              <div class="forecast-item">
+                <h5 id="day5"></h5>
+                <div class="forecast-item-details">
+                  <div id="day5-condition" class="condition-box">Condition</div>
+                  <p class="box">Temperature<span id="day5-temp"></span></p>
+                  <p class="box">Humidity<span id="day5-humidity"></span></p>
+                  <p class="box">Wind Speed<span id="day5-wind"></span></p>
+                </div>
+              </div>
+
+              <div class="forecast-item">
+                <h5 id="day6"></h5>
+                <div class="forecast-item-details">
+                  <div id="day6-condition" class="condition-box">Condition</div>
+                  <p class="box">Temperature<span id="day6-temp"></span></p>
+                  <p class="box">Humidity<span id="day6-humidity"></span></p>
+                  <p class="box">Wind Speed<span id="day6-wind"></span></p>
+                </div>
+              </div>
+
+              <div class="forecast-item">
+                <h5 id="day7"></h5>
+                <div class="forecast-item-details">
+                  <div id="day7-condition" class="condition-box">Condition</div>
+                  <p class="box">Temperature<span id="day7-temp"></span></p>
+                  <p class="box">Humidity<span id="day7-humidity"></span></p>
+                  <p class="box">Wind Speed<span id="day7-wind"></span></p>
+                </div>
+              </div>
+
+              <div class="forecast-item">
+                <h5 id="day8"></h5>
+                <div class="forecast-item-details">
+                  <div id="day8-condition" class="condition-box">Condition</div>
+                  <p class="box">Temperature<span id="day8-temp"></span></p>
+                  <p class="box">Humidity<span id="day8-humidity"></span></p>
+                  <p class="box">Wind Speed<span id="day8-wind"></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+        <p>Designed and Developed By Nirali Mamaniya</p>
+      </footer>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
